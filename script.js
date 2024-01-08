@@ -18,6 +18,8 @@ import { firebaseConfig } from "./config.js";
 
   const db = getFirestore(app);
 
+  console.log('###', { processEnv: process.env });
+
   const querySnapshot = await getDocs(collection(db, "users"));
   querySnapshot.forEach(async (_doc) => {
     console.log(`${_doc.id} => ${_doc.data()}`);
