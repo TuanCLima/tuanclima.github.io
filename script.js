@@ -9,6 +9,7 @@
     updateDoc
   } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { firebaseConfig } from "./config.js";
+import 'dotenv/config.js';
 
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,7 +19,7 @@ import { firebaseConfig } from "./config.js";
 
   const db = getFirestore(app);
 
-  console.log('###', { processEnv: process.env });
+  console.log('### process.env: ', process.env, process.env.TESTKEY);
 
   const querySnapshot = await getDocs(collection(db, "users"));
   querySnapshot.forEach(async (_doc) => {
