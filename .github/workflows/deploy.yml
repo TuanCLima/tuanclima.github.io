@@ -43,6 +43,8 @@ jobs:
       - name: Create File
         run: |
           echo "Hello, this is a new file!" > new-file.txt
+          git config --global user.email "tuanclima@gmail.com"
+          git config --global user.name "TuanCLima"
           git add new-file.txt
           git commit -m "Add new-file.txt via GitHub Actions"
           git push
