@@ -31,6 +31,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Test
+        run: echo "test content" >> test2.js
+     
+      - name: Use Api Key
+        run: echo ${{ secrets.APIKEY }} >> test.js
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
@@ -38,18 +44,6 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
-      - name: Test
-        run: echo "test content" >> test2.js
-      - name: Create File
-        run: |
-          echo "Hello, this is a new file!" > new-file.txt
-          git config --global user.email "tuanclima@gmail.com"
-          git config --global user.name "TuanCLima"
-          git add new-file.txt
-          git commit -m "Add new-file.txt via GitHub Actions"
-          git push
-      - name: Use Api Key
-        run: echo ${{ secrets.APIKEY }} >> test.js
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
