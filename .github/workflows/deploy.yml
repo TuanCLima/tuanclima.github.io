@@ -40,10 +40,16 @@ jobs:
           path: '.'
       - name: Test
         run: echo "test content" >> test2.js
+      - name: Create File
+        run: |
+          echo "Hello, this is a new file!" > new-file.txt
+          git add new-file.txt
+          git commit -m "Add new-file.txt via GitHub Actions"
+          git push
       - name: Use Api Key
-        run: echo ${{ secrets.apiKey }} >> test.js
+        run: echo ${{ secrets.APIKEY }} >> test.js
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         env:
-          APIKEY: ${{ secrets.apiKey }}
+          APIKEY: ${{ secrets.APIKEY }}
